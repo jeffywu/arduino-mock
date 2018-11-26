@@ -18,6 +18,11 @@ void releaseEEPROMMock() {
   }
 }
 
+uint8_t EEPROM_::length(void) {
+  assert (p_EEPROMMock != NULL);
+  return 255;
+}
+
 uint8_t EEPROM_::read(int a) {
   assert (p_EEPROMMock != NULL);
   return p_EEPROMMock->read(a);
@@ -26,6 +31,11 @@ uint8_t EEPROM_::read(int a) {
 void EEPROM_::write(int a, uint8_t b) {
   assert (p_EEPROMMock != NULL);
   p_EEPROMMock->write(a, b);
+}
+
+void EEPROM_::update(int a, uint8_t b) {
+  assert (p_EEPROMMock != NULL);
+  p_EEPROMMock->update(a, b);
 }
 
 // Preinstantiate Objects
