@@ -40,8 +40,8 @@ extern "C" {
 #define FALLING 2
 #define RISING 3
 
-#define interrupts() sei()
-#define noInterrupts() cli()
+void interrupts(void);
+void noInterrupts(void);
 
 typedef uint8_t boolean;
 typedef uint8_t byte;
