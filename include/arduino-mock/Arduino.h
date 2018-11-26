@@ -40,6 +40,8 @@ extern "C" {
 #define FALLING 2
 #define RISING 3
 
+#define digitalPinToInterrupt(p)  ((p) == 2 ? 0 : ((p) == 3 ? 1 : NOT_AN_INTERRUPT))
+
 void interrupts(void);
 void noInterrupts(void);
 
