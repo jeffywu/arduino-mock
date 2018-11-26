@@ -43,6 +43,12 @@ extern "C" {
 void interrupts(void);
 void noInterrupts(void);
 
+uint8_t digitalPinToBitMask(uint8_t);
+uint8_t digitalPinToPort(uint8_t);
+uint8_t* portOutputRegister(uint8_t);
+uint8_t* portInputRegister(uint8_t);
+uint8_t* portModeRegister(uint8_t);
+
 typedef uint8_t boolean;
 typedef uint8_t byte;
 
@@ -85,6 +91,22 @@ class ArduinoMock {
 
   public:
     ArduinoMock();
+
+    // https://www.arduino.cc/en/Reference/PortManipulation
+    // Pins 0 to 7
+    uint8_t DDRD;   // mode register
+    uint8_t PORTD;  // output register
+    uint8_t PIND;   // input register
+
+    // Pins 8 to 13
+    uint8_t DDRB;   // mode register
+    uint8_t PORTB;  // output register
+    uint8_t PINB;   // input register
+
+    // Analog Pins 0 to 5
+    uint8_t DDRC;   // mode register
+    uint8_t PORTC;  // output register
+    uint8_t PINC;   // input register
 
     unsigned long getMillis() {
       return currentMillis;

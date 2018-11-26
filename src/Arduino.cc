@@ -22,6 +22,31 @@ ArduinoMock::ArduinoMock() {
 void interrupts(void) { return; };
 void noInterrupts(void) { return; };
 
+uint8_t digitalPinToBitMask(uint8_t pin) { 
+  UNUSED(pin);
+  return 1; 
+};
+
+uint8_t digitalPinToPort(uint8_t pin) { 
+  UNUSED(pin);
+  return 1;
+};
+
+uint8_t* portOutputRegister(uint8_t port) {
+  UNUSED(port);
+  return &arduinoMock->PORTD; 
+};
+
+uint8_t* portInputRegister(uint8_t port) {
+  UNUSED(port);
+  return &arduinoMock->PIND; 
+};
+
+uint8_t* portModeRegister(uint8_t port) {
+  UNUSED(port);
+  return &arduinoMock->DDRD; 
+};
+
 void pinMode(uint8_t a, uint8_t b) {
   assert (arduinoMock != NULL);
   arduinoMock->pinMode(a, b);
