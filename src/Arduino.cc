@@ -19,8 +19,8 @@ ArduinoMock::ArduinoMock() {
   currentMillis = 0;
 }
 
-void interrupts(void) { return };
-void noInterrupts(void) { return };
+void interrupts(void) { return; };
+void noInterrupts(void) { return; };
 
 void pinMode(uint8_t a, uint8_t b) {
   assert (arduinoMock != NULL);
