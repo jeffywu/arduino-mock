@@ -147,7 +147,10 @@ class ArduinoMock {
     MOCK_METHOD1(digitalRead, int (int));
     MOCK_METHOD1(analogRead, int (int));
     MOCK_METHOD1(delay, void (int));
+    MOCK_METHOD1(delayMicroseconds, void (int));
     MOCK_METHOD0(millis, unsigned long ());
+    MOCK_METHOD0(interrupts, void (void));
+    MOCK_METHOD0(noInterrupts, void (void));
 };
 ArduinoMock* arduinoMockInstance();
 void releaseArduinoMock();

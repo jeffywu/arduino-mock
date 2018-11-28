@@ -19,12 +19,22 @@ ArduinoMock::ArduinoMock() {
   currentMillis = 0;
 }
 
-void interrupts(void) { return; };
-void noInterrupts(void) { return; };
+void interrupts(void) {
+  return arduinoMock->interrupts();
+};
+
+void noInterrupts(void) {
+  return arduinoMock->noInterrupts();
+};
 
 uint8_t digitalPinToBitMask(uint8_t pin) { 
-  UNUSED(pin);
-  return 1; 
+  if (pin >= 0 && pin <= 7) {
+    return (0x01 << pin);
+  } else if (pin >= 8 && pin <= 13) {
+    return (0x01 << (pin - 8));
+  } else {
+    return 0x01;
+  }
 };
 
 uint8_t digitalPinToPort(uint8_t pin) { 
@@ -71,6 +81,7 @@ void analogReference(uint8_t mode) {
 }
 
 void analogWrite(uint8_t a, int b) {
+
   assert (arduinoMock != NULL);
   arduinoMock->analogWrite(a, b);
 }
@@ -89,7 +100,8 @@ void delay(unsigned long a) {
   arduinoMock->delay(a);
 }
 void delayMicroseconds(unsigned int us) {
-  UNUSED(us);
+  assert (arduinoMock != NULL);
+  arduinoMock->delayMicroseconds(us);
 }
 
 unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout) {

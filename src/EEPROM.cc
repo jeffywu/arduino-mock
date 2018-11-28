@@ -20,7 +20,7 @@ void releaseEEPROMMock() {
 
 uint8_t EEPROM_::length(void) {
   assert (p_EEPROMMock != NULL);
-  return 255;
+  return p_EEPROMMock->length();
 }
 
 uint8_t EEPROM_::read(int a) {
