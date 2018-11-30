@@ -94,6 +94,12 @@ class ArduinoMock {
 
   public:
     ArduinoMock();
+    bool _interruptsOn;
+    unsigned int _millisDelayed;
+
+    void _resetMillisDelayed(void) {
+        _millisDelayed = 0;
+    }
 
     // https://www.arduino.cc/en/Reference/PortManipulation
     // Pins 0 to 7

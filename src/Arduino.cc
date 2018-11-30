@@ -17,13 +17,17 @@ void releaseArduinoMock() {
 
 ArduinoMock::ArduinoMock() {
   currentMillis = 0;
+  _millisDelayed = 0;
+  _interruptsOn = true;
 }
 
 void interrupts(void) {
+  arduinoMock->_interruptsOn = true;
   return arduinoMock->interrupts();
 };
 
 void noInterrupts(void) {
+  arduinoMock->_interruptsOn = false;
   return arduinoMock->noInterrupts();
 };
 
@@ -101,6 +105,7 @@ void delay(unsigned long a) {
 }
 void delayMicroseconds(unsigned int us) {
   assert (arduinoMock != NULL);
+  arduinoMock->_millisDelayed += us;
   arduinoMock->delayMicroseconds(us);
 }
 
